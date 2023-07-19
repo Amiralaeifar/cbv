@@ -17,14 +17,15 @@ class Home(View):
         '''
             initial setup for the view
         '''
-        pass
+        return super().setup(request, *args, **kwargs)
     
     
     def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated and request.user:
-            return super().dispatch(request, *args, **kwargs)
-        return AttributeError('you are not authenticated')
-
+        '''
+        the middleman between request and response
+        '''
+        return super().dispatch(request, *args, **kwargs)
+        
 
     def options(self, request, *args, **kwargs):
         '''
